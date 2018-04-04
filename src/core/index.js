@@ -4,9 +4,14 @@ const BlockService = require('ipfs-block-service')
 const Ipld = require('ipld')
 const PeerId = require('peer-id')
 const PeerInfo = require('peer-info')
+const dagCBOR = require('ipld-dag-cbor')
+const dagPB = require('ipld-dag-pb')
+const crypto = require('libp2p-crypto')
+const isIPFS = require('is-ipfs')
 const multiaddr = require('multiaddr')
 const multihash = require('multihashes')
 const PeerBook = require('peer-book')
+const multibase = require('multibase')
 const CID = require('cids')
 const debug = require('debug')
 const extend = require('deep-extend')
@@ -58,8 +63,13 @@ class IPFS extends EventEmitter {
       PeerId: PeerId,
       PeerInfo: PeerInfo,
       multiaddr: multiaddr,
+      multibase: multibase,
       multihash: multihash,
-      CID: CID
+      CID: CID,
+      crypto: crypto,
+      dagPB: dagPB,
+      dagCBOR: dagCBOR,
+      isIPFS: isIPFS
     }
 
     // IPFS Core Internals
